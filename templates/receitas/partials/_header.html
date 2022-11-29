@@ -57,16 +57,18 @@
                             <div class="classynav">
                                 <ul>
                                     {% if user.is_authenticated %}
-                                    <li><a href="{% url 'index' %}">Página principal</a></li>
-                                    <li><a href="{% url 'dashboard' %}">Minhas receitas</a></li>
-                                    <li><a href="{% url 'criar_receitas' %}">Criar receitas</a></li>
-                                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                                {% else %}
-                                    <li><a href="{% url 'index' %}">Página principal</a></li>
-                                    <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
-                                    <li><a href="{% url 'login' %}">Login</a></li>
-                                {% endif %}
-                                </ul>
+                                        <li><a href="{% url 'index' %}">Página principal</a></li>
+                                        <li><a href="{% url 'dashboard' %}">Minhas receitas</a></li>
+                                        <li><a href="{% url 'criar_receitas' %}">Criar receita</a></li>
+                                        {% if user.is_superuser %}
+                                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                                        {% endif %}
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                    {%  endif %}
+                              </ul>   
 
 
                                 <!-- Formulario de busca -->

@@ -22,6 +22,8 @@
             </div>
         </div>
      </div>
+    
+     {% include 'receitas/partials/_message.html' %}
 
     <!-- ##### Best Receipe Area Start ##### -->
     <section class="best-receipe-area">
@@ -32,16 +34,18 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        {% if receita.foto_receita == '' %}
+                        {% if receita.imagem_receita == '' %}
                             <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="">
                         {% else %}
-                            <img src="{{ receita.foto_receita.url }}" alt="">
+                            <img src="{{ receita.imagem_receita.url }}" alt="">
                         {% endif %}
                             <div class="receipe-content">
-                            <a href="{% url 'receita' receita.id %}">
-                                <h5>{{ receita.nome_receita }}</h5>
-                            </a>
-                        </div>
+                                <a href="{% url 'receita' receita.id %}">
+                                    <h5>{{ receita.nome_receita }}</h5>
+                                    <a href="{% url 'editar_receita' receita.id %}" name="editar" type="buttton" class="btn btn-primary" >Editar</a>
+                                    <a href="{% url 'deletar_receita' receita.id %}" name="deletar" type="buttton" class="btn btn-danger" >Deletar</a>
+                                </a>
+                            </div>
                     </div>
                 </div>
                 {% endfor %}

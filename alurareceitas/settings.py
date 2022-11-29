@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'alurareceitas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'receitas_atual',
+        'NAME': 'receitas_project',
         'USER': 'postgres',
         'PASSWORD': '3102',
         'HOST': 'localhost'
@@ -133,3 +133,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+}

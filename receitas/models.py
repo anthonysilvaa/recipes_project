@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from pessoa.models import PessoaModel
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class ReceitaModel(models.Model):
     rendimento = models.CharField(max_length=100)
     categoria = models.CharField(max_length=100)
     data_receita = models.DateTimeField(default=datetime.now, blank=True)
-    pessoa = models.ForeignKey(PessoaModel, on_delete=models.CASCADE)
+    pessoa = models.ForeignKey(User, on_delete=models.CASCADE)
     imagem_receita = models.ImageField(upload_to="fotos/%d/%m/%Y", blank=True)
     publicada = models.BooleanField(default=False)
 
